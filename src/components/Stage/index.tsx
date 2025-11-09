@@ -22,7 +22,10 @@ const Stage = () => {
   const [words, setWords] = useState<string[]>(["jahoda"]);
 
   const handleFinish = () => {
-    setWords([]);
+    const newWord = generateWord(6);
+    if (newWord) {
+      setWords([newWord]);
+    }
   };
 
   return (
