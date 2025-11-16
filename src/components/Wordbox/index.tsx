@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
+import confetti from "canvas-confetti";
 
 interface IWordboxProp {
   word: string;
@@ -20,14 +21,17 @@ const Wordbox: React.FC<IWordboxProp> = ({
   useEffect(() => {
     if (!active) return;
     const handleKeyUp = (e: KeyboardEvent) => {
-      // pokud uživatel napsal poslední písmenko správně
       if (lettersLeft.length === 1 && e.key === lettersLeft[0]) {
+        // vystřelíme konfety
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
         onFinish();
-        // jinak kontolujeme první znak
       } else if (e.key === lettersLeft[0]) {
         setLettersLeft((x) => x.slice(1));
       } else {
-        // uživatel udělal chybu
         setWordBoxMistake(true);
         onMistake();
       }
