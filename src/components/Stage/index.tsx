@@ -21,12 +21,17 @@ const generateWord = (size: number) => {
 
 const Stage = () => {
   const [words, setWords] = useState<string[]>(["jahoda"]);
+  const [stageMistake, setStageMistake] = useState<number>(0);
 
   const handleFinish = () => {
     const newWord = generateWord(6);
     if (newWord) {
       setWords([newWord]);
     }
+  };
+
+  const handleMistake = () => {
+    setStageMistake((e) => e + 1);
   };
 
   return (
@@ -38,6 +43,7 @@ const Stage = () => {
             key={word + index}
             onFinish={handleFinish}
             active={index === 0}
+            onMistake={handleMistake}
           />
         ))}
       </div>
@@ -46,7 +52,7 @@ const Stage = () => {
         <img className="bird" src={bird} alt="" />
       </div>
 
-      <div className="stage__mistakes">Chyb: 0</div>
+      <div className="stage__mistakes">Chyb:{stageMistake}</div>
     </div>
   );
 };

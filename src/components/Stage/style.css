@@ -26,3 +26,30 @@
   height: 420px;
   border-radius: 12px;
 }
+
+@media (max-width: 800px) {
+  .stage {
+    height: 640px;
+    width: 480px;
+    padding: 16px;
+    margin: 16px auto;
+  }
+
+  .stage__mistakes {
+    margin-top: 80px;
+  }
+
+  .stage__words {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .bird {
+    position: absolute;
+    top: 400px;
+    right: 550px;
+    transform: translateX(-200%);
+    width: 285px;
+    height: 280px;
+  }
+}

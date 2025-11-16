@@ -4,3 +4,9 @@
   margin-bottom: 20px;
   color: rgb(180, 136, 136);
 }
+
+@media (max-width: 800px) {
+  .heading-text {
+    text-align: center;
+  }
+}
