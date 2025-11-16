@@ -2,6 +2,7 @@ import { useState } from "react";
 import Wordbox from "../Wordbox";
 import wordList from "../../word-list";
 import "./style.css";
+import bird from "./bird.gif";
 
 // TODO: temporary disable function - remove next line when you start using it
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
@@ -30,12 +31,22 @@ const Stage = () => {
 
   return (
     <div className="stage">
-      <div className="stage__mistakes">Chyb: 0</div>
       <div className="stage__words">
-        {words.map((word) => (
-          <Wordbox word={word} key={word} onFinish={handleFinish} />
+        {words.map((word, index) => (
+          <Wordbox
+            word={word}
+            key={word + index}
+            onFinish={handleFinish}
+            active={index === 0}
+          />
         ))}
       </div>
+      <div>
+        {" "}
+        <img className="bird" src={bird} alt="" />
+      </div>
+
+      <div className="stage__mistakes">Chyb: 0</div>
     </div>
   );
 };

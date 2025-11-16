@@ -4,13 +4,15 @@ import "./style.css";
 interface IWordboxProp {
   word: string;
   onFinish: () => void;
+  active: boolean;
 }
 
-const Wordbox: React.FC<IWordboxProp> = ({ word, onFinish }) => {
+const Wordbox: React.FC<IWordboxProp> = ({ word, onFinish, active }) => {
   const [lettersLeft, setLettersLeft] = useState<string>(word);
   const [mistake, setMistake] = useState<boolean>(false);
 
   useEffect(() => {
+    if (!active) return;
     const handleKeyUp = (e: KeyboardEvent) => {
       // pokud uživatel napsal poslední písmenko správně
       if (lettersLeft.length === 1 && e.key === lettersLeft[0]) {
@@ -29,18 +31,15 @@ const Wordbox: React.FC<IWordboxProp> = ({ word, onFinish }) => {
     return () => {
       document.removeEventListener("keyup", handleKeyUp);
     };
-  }, [lettersLeft, onFinish]);
+  }, [lettersLeft, onFinish, active]);
 
   return (
     <>
       <div className={`wordbox ${mistake ? "wordbox--mistake" : ""}`}>
         {lettersLeft}
       </div>
-      ;
     </>
   );
 };
 
 export default Wordbox;
-
-// Upravte komponentu Wordbox tak, že pověsíte posluchače události keyUp na document. Pokud uživatel napsal správně první písmenko slova, toto písmenko ze slova umažte. Takto pokračujte dokud uživatel nenapíše celé slovo. V posluchači budete používat stav lettersLeft a bude potřeba se vyhnout jeho zastarávání (stale state). Použijte probíranou techniku, kdy posluchače události měníte svépomocí. Do závislostí useEffectu bude potřeba přidat stav lettersLeft.

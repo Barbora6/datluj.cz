@@ -1,9 +1,10 @@
-import Stage from './components/Stage';
+import Stage from "./components/Stage";
+import { Item } from "./Item";
 
 const App: React.FC = () => {
   return (
     <div className="container">
-      <h1>Datlování</h1>
+      <Item />
       <Stage />
     </div>
   );

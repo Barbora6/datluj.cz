@@ -1,14 +1,14 @@
 .stage {
-  height: 340px;
+  height: 820px;
   padding: 32px;
   margin: 32px auto;
-  background-color: #efefef;
+  background-color: #e7e150;
   border-radius: 8px;
 }
 
 .stage__mistakes {
   text-align: center;
-  margin-bottom: 64px;
+  margin-top: 162px;
 }
 
 .stage__words {
@@ -16,4 +16,13 @@
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
+}
+
+.bird {
+  position: absolute;
+  top: 480px;
+  left: 800px;
+  width: 480px;
+  height: 420px;
+  border-radius: 12px;
 }
